@@ -1,0 +1,5 @@
+[package]
+name = "xet"
+version = "0.1.0"
+authors = ["Tzu-ping Chung <uranusjr@gmail.com>"]
+edition = "2018"
