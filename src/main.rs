@@ -5,7 +5,9 @@ fn run(cmd: &str, args: Vec<String>, envs: Vec<(String, String)>) -> i32 {
         .status()
         .unwrap_or_else(|_| panic!("failed to run {}", cmd));
 
-    // TODO: None means a signal. Extract with std::os::unix.
+    // TODO: Should handle signal forwarding.
+
+    // TODO: None means termination via signal. Extract with std::os::unix.
     result.code().unwrap_or(-1)
 }
 
@@ -15,6 +17,8 @@ fn main() {
     let mut args_iter = std::env::args().skip(1);
     while let Some(arg) = args_iter.next() {
         let parts: Vec<&str> = arg.splitn(2, '=').collect();
+        // TODO: The argument should be treated as a command if the key part
+        // looks like a path.
         match parts.len() {
             1 => { std::process::exit(run(&arg, args_iter.collect(), envs)) },
             2 => { envs.push((parts[0].to_string(), parts[1].to_string())); },
