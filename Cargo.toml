@@ -3,3 +3,7 @@ name = "xet"
 version = "0.1.0"
 authors = ["Tzu-ping Chung <uranusjr@gmail.com>"]
 edition = "2018"
+
+description = "Launch process with environment variables"
+license = "ISC"
+repository = "https://github.com/uranusjr/xet.git"
